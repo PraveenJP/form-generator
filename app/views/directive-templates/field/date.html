@@ -1,0 +1,8 @@
+<div class="form-group">
+    <label for="">{{field.field_title}}</laebl>
+    <div class="input-group">
+    	<input type="text" class="form-control" ng-model="field.field_value" data-date-format="mm/dd/yyyy" bs-datepicker  ng-required="field.field_required" ng-disabled="field.field_disabled">
+    	<span class="input-group-addon"><a type="button" data-toggle="datepicker"><i class="icon ion-android-calendar"></i></a></span>
+    </div>
+    <span class="error" ng-show="field.field_required && !field.field_value">This field is required. </span>
+</div>

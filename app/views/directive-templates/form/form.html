@@ -1,0 +1,28 @@
+<h2 align="center">{{ form.form_name }}</h2>
+
+<div class="alert alert-success" ng-show="!form.submitted">
+
+    <div class="form-group">
+        <label for="">Form ID: {{ form.form_id }}</label>
+    </div>
+
+    <form name="myForm" ng-submit="submit(field)">
+        <div ng-repeat="field in form.form_fields">
+            <field-directive field="field">
+
+            </field-directive>
+        </div>
+        <div align="center">
+            <input class="btn btn-success" type="submit" ng-disabled="!myForm.$valid" value="Submit" />            
+        </div>
+    </form>
+
+</div>
+
+<div ng-show="form.submitted">
+    <h3>Submitted Data</h3>
+    <div ng-repeat="field in form.form_fields">
+        Field Title: {{ field.field_title }} <br>
+        Field Value: {{ field.field_value }} <br><br>
+    </div>
+</div>

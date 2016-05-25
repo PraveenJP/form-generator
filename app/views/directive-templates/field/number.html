@@ -1,0 +1,14 @@
+<div class="form-group">
+	<label for="">{{field.field_title}}:</label>    
+	<input class="form-control" type="number" 
+		name ="{{field.field_title}}"
+		ng-model="field.field_value" 
+		value="{{field.field_value}}" 
+		ng-required="field.field_required"
+		ng-disabled="field.field_disabled"
+		min="{{field.minlength}}"
+		max="{{field.maxlength}}"
+		/>
+
+		<span class="error" ng-show="field.field_required && !field.field_value">This field is required.</span>
+</div>

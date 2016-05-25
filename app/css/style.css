@@ -1,0 +1,15 @@
+/* Custom CSS here */
+
+body{
+	background: url(../img/bg.jpg) repeat;
+}
+
+.error{
+    color: red;
+    font-weight: bold;
+}
+
+.a-link{
+	text-decoration: none !important;
+	cursor: pointer;
+}

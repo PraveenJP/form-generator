@@ -1,0 +1,122 @@
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-lg-6">
+
+            <div ng-hide="previewMode">
+                
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="">Form id</label>
+                        <input type="text" class="form-control" name="form-id" ng-disabled="true" ng-model="form.form_id">
+                        </div>
+                    <div class="form-group">
+                        <label for="">Form Name:</label>
+                        <input type="text" class="form-control" name="form-name" ng-disabled="previewMode" ng-model="form.form_name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Select Field</label>
+                    <div class="input-group">
+                        <select class="form-control" ng-model="addField.new" ng-options="type.name as type.value for type in addField.types"></select>
+                        <div class="input-group-addon"><a class="a-link" ng-click="addNewField()"><i class="icon ion-plus"></i> Add</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <div class="col-lg-6" ng-hide="previewMode">
+            <div class="alert alert-success" ng-show="form.form_fields.length == 0"><h4 align="center">No fields added yet.</h4><br><h5 align="center"><i>Add Now. :)</i></h5></div>
+
+                <div  ng-repeat="field in form.form_fields">
+                    <div class="from-group">
+                        <label for="" class="label label-success">{{field.field_title}}</label>
+                    </div>
+                    <div class="alert alert-info">
+                        <button class="btn btn-danger pull-right" type="button" ng-click="deleteField(field.field_id)"><i class="icon ion-trash-b"></i></button>
+
+                        <div class="form-group">
+                            <label for="">Field ID: {{field.field_id}}</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Field Type: {{field.field_type}}</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Field Title:</label>
+                            <input type="text" class="form-control" ng-model="field.field_title" value="{{field.field_title}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Field Default Value:</label>
+                            <input type="text" class="form-control" ng-model="field.field_value" value="{{field.field_value}}">
+                        </div>
+
+                        <div class="form-group" ng-show="showAddOptions(field)">
+                            <label for="">Field Options:</label>
+                            <div ng-repeat="option in field.field_options">
+                                <div class="row form-group">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" ng-model="option.option_title" value="{{option.option_title}}">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <a class="btn btn-danger btn-mini right" type="button" ng-click="deleteOption(field, option)"><i class="icon ion-android-remove"></i></a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="label label-info">Value: {{ option.option_value }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-small" type="button" ng-click="addOption(field)"><i class="icon ion-plus"></i></button>
+                        </div>    
+
+                        <div class="form-group" ng-show="showTextfield(field)">
+                            <label for="">Min</label>
+                            <input type="number" class="form-control" ng-model="field.minlength" value="{{field.minlength}}" />
+                            <label for="">Max</label>
+                            <input type="number" class="form-control" ng-model="field.maxlength" value="{{field.maxlength}}" />
+                        </div>					
+
+                        <div class="from-group">
+                            <label for="">Required:</label>                                
+                                <input type="radio" ng-value="true" ng-selected ng-model="field.field_required"/>
+                                &nbsp; Yes                                
+                                <input type="radio" ng-value="false" ng-model="field.field_required"/>
+                                &nbsp; No                            
+                        </div>
+
+    					<div class="form-group">
+    						<label for="">Disabled:</label>                                
+                                <input type="radio" ng-value="true" ng-selected ng-model="field.field_disabled"/>
+                                &nbsp; Yes                                
+                                <input type="radio" ng-value="false" ng-model="field.field_disabled"/>
+                                &nbsp; No
+                        </div>
+                    </div>
+                </div>
+
+                <p ng-hide="form.form_fields.length == 0" class="text-center">
+                    <button class="btn btn-primary right" type="button" ng-click="previewOn()"><i class="icon-eye-open icon-white"></i> Generate Form</button>
+                    <button class="btn btn-danger right" type="button" ng-click="reset()"><i class="icon-refresh icon-white"></i> Clear Form</button>
+                </p>   
+
+        </div>
+    </div>
+
+    <div>
+        <h4>JSON Object View:</h4>
+        <pre>{{ form | json }}</pre>
+    </div>
+
+    <div class="form-group" ng-show="previewMode">
+
+        <form-directive form="previewForm"></form-directive>
+
+        <p class="text-center">
+            <button class="btn btn-primary btn-large right" type="button" ng-click="previewOff()">Back to Form generator</button>
+        </p>
+
+    </div>
+</div>
+

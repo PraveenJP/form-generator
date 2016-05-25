@@ -1,0 +1,16 @@
+<div class="form-group">
+    <label for="">{{field.field_title}}:</label>
+     <textarea 
+     	type="text" 
+     	class="form-control" 
+     	ng-model="field.field_value" 
+     	value="{{field.field_value}}" 
+     	ng-required="field.field_required" 
+     	ng-disabled="field.field_disabled"
+     	minlength="{{field.minlength}}"
+		maxlength="{{field.maxlength}}"
+     	>
+     	</textarea>
+     <span class="error" ng-show="field.field_required && !field.field_value">This field is required.</span>
+    </div>
+</div>

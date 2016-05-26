@@ -14,7 +14,7 @@ app.use('/node_modules',express.static(path.join(__dirname+'/node_modules')));
 app.use('/bower_components',express.static(path.join(__dirname+'/bower_components')));
 
 // Send form
-app.get('/form', function(req,res){
+app.post('/form', function(req,res){
 	console.log(res);
 })
 

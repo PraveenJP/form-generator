@@ -1,28 +1,40 @@
 <h2 align="center">{{ form.form_name }}</h2>
 
-<div class="alert alert-success" ng-show="!form.submitted">
+<div ng-show="!form.submitted">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 alert alert-success">
+            <div class="form-group">
+                <label for="">Form ID: {{ form.form_id }}</label>
+            </div>
 
-    <div class="form-group">
-        <label for="">Form ID: {{ form.form_id }}</label>
+            <form name="myForm" ng-submit="submit(form)">
+                <div ng-repeat="field in form.form_fields">
+                    <field-directive field="field">
+
+                    </field-directive>
+                </div>
+                <div align="center">
+                    <input class="btn btn-success" type="submit"  ng-disabled="!myForm.$valid" value="Submit" />            
+                </div>
+            </form>            
+        </div>
     </div>
-
-    <form name="myForm" ng-submit="submit(field)">
-        <div ng-repeat="field in form.form_fields">
-            <field-directive field="field">
-
-            </field-directive>
-        </div>
-        <div align="center">
-            <input class="btn btn-success" type="submit" ng-disabled="!myForm.$valid" value="Submit" />            
-        </div>
-    </form>
 
 </div>
 
 <div ng-show="form.submitted">
-    <h3>Submitted Data</h3>
-    <div ng-repeat="field in form.form_fields">
-        Field Title: {{ field.field_title }} <br>
-        Field Value: {{ field.field_value }} <br><br>
-    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-success">
+                <div class="panel-heading">Submitted Data to Backend</div>
+                <div class="panel-body">
+                    <div ng-repeat="field in form.form_fields">
+                        Field Title: {{ field.field_title }} <br>
+                        Field Value: {{ field.field_value }} <br><br>
+                    </div>
+                </div>
+                <div class="panel-footer panel-warning">Please check the backend console</div>
+            </div>
+        </div>
+    </div> 
 </div>

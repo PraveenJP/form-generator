@@ -21,7 +21,8 @@
   "author": "Praveen JP",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.13.4",
-    "bower": "1.6.5"
+    "body-parser": "^1.15.1",
+    "bower": "1.6.5",
+    "express": "^4.13.4"
   }
 }

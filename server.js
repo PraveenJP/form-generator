@@ -3,7 +3,11 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var http = require('http');
+var bodyparser = require('body-parser');
 var PORT = process.env.PORT || 3000;
+
+// Set JSON body parser
+app.use(bodyparser.json());
 
 // Path to app directive
 app.use(express.static(path.join(__dirname+'/app')));
@@ -16,7 +20,7 @@ app.use('/bower_components',express.static(path.join(__dirname+'/bower_component
 
 // Send form
 app.post('/form', function(req,res){
-	console.log(res);
+	console.log(req.body);
 })
 
 // Listen Server

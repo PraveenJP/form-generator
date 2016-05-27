@@ -16,7 +16,7 @@ __Live demo__ : <https://formgenerator.herokuapp.com/>
 
 If you like to run the app on your machine,
 
-You need to follow the below simple steps.
+You need to follow the below easy 3 steps.
 
 __Step 1:__ Clone the project first. To clone use the below comment
 

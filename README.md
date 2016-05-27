@@ -10,8 +10,7 @@ __Technologies I have used in this project__
 1. Angular 1.x (JS MV* Framework)
 2. Express JS (Middleware of the app)
 3. Node JS (Runtime Environment)
-4. Express JS (App Middleware)
-5. Bootstrap (Frontend Framework)
+4. Bootstrap (Frontend Framework)
 
 __Live demo__ : <https://formgenerator.herokuapp.com/>
 
